@@ -60,7 +60,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self startSensor];
-    [self stopSensor];
 }
 
 - (void)didReceiveMemoryWarning
