@@ -13,6 +13,7 @@
 @interface LTViewController ()
 
 @property LTRemoteIOPlayThru *remoteIOPlayThru;
+@property NSString *hoge;
 
 @end
 
@@ -24,8 +25,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	
 	self.remoteIOPlayThru = [[LTRemoteIOPlayThru alloc] init];
+	[self.remoteIOPlayThru setSuperView:self];
 	[self.remoteIOPlayThru play];
 }
+
+- (void)updateCurrentLevelLabel:(NSString *)str
+{
+	self.hoge = [NSString stringWithFormat:@"%@", str];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -33,4 +41,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pushedNoiseRecordButton:(id)sender
+{
+	self.currentLevelLabel.text = self.hoge;
+}
 @end

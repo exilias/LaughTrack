@@ -22,11 +22,18 @@
 @property BOOL isRecording;
 @property ExtAudioFileRef extAudioFile;	// 録音したファイル
 @property AudioStreamBasicDescription audioUnitOutputFormat;	// Remote OutputのアウトプットのASBD
+@property AudioUnit	remoteIOUnit;
 
 @end
 
 
 @implementation LTRemoteIOPlayThru
+
+
+// グローバル変数
+AudioUnitSampleType noiseVolume;
+BOOL isSpeaking, isInstantSpeaking, justNow;
+float timeInSilent, timeFromLastSpeak, timeInInstantSpeaking, timeInNonInstantSpeaking;
 
 
 static OSStatus renderCallback(void							*inRefCon,
@@ -56,18 +63,76 @@ static OSStatus outputCallback(void							*inRefCon,
 							   AudioBufferList				*ioData)
 {
 	OSStatus err;
-	AudioUnit remoteIOUnit = (AudioUnit)inRefCon;
-	err = AudioUnitRender(remoteIOUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
+	LTRemoteIOPlayThru *remotIOPlayThru = (__bridge LTRemoteIOPlayThru *)inRefCon;
+	//AudioUnit remoteIOUnit = (AudioUnit)inRefCon;
+	err = AudioUnitRender(remotIOPlayThru.remoteIOUnit, ioActionFlags, inTimeStamp, 1, inNumberFrames, ioData);
 	if (err) {
 		NSLog(@"recordingCallback: error %ld\n", err);
 		return err;
 	}
-	
+		
 	for (int j = 0; j < ioData->mNumberBuffers; j++) {
 		AudioSampleType *output = ioData->mBuffers[j].mData;
-		NSLog(@"%d", output[0]);
+				
 		for (int i = 0; i < inNumberFrames; i++) {
-			AudioUnitSampleType sample = output[i] * 3.162277;	// 10dB
+			AudioUnitSampleType sample = output[i]/** 3.162277*/;	// 10dB
+			
+			
+			// ここで発話アルゴリズムを書く
+			// -------------------------------
+			if (abs(sample) > noiseVolume * 2) {
+				NSLog(@"発話");
+				if (!isInstantSpeaking) {
+					isInstantSpeaking = YES;
+				}
+			} else {
+				NSLog(@"Not発話");
+				if (isInstantSpeaking) {
+					isInstantSpeaking = NO;
+				}
+			}
+			
+			if (isInstantSpeaking) {
+				timeInInstantSpeaking += inNumberFrames;
+				timeInNonInstantSpeaking = 0;
+			} else {
+				timeInInstantSpeaking = 0;
+				timeInNonInstantSpeaking += inNumberFrames;
+			}
+			
+			// 発話フラグのオンオフ
+			if (isSpeaking) {
+				if (timeInNonInstantSpeaking > 0.5 * 44100.0) {
+					isSpeaking = NO;
+				}
+			} else {
+				if (timeInInstantSpeaking > 0.5 * 44100.0) {
+					isSpeaking = YES;
+				}
+			}
+			
+			if (isSpeaking) {
+				timeInSilent = 0;
+			} else {
+				timeInSilent += inNumberFrames;
+			}
+			
+			if (justNow) {
+				timeFromLastSpeak += inNumberFrames;
+				if (timeFromLastSpeak >= 2.1 * 44100.0) {
+					justNow = NO;
+					timeFromLastSpeak = 0;
+				}
+			}
+			
+			//黙ってる時間が0.3秒以上　かつ　前回の発話から2.1秒以上経過
+			if (timeInSilent >= 0.3 * 44100.0 && !justNow) {
+				justNow = YES;
+				
+				//NSLog(@"うんうん！");
+			}
+			
+			
 			
 			// -32768 〜 32767の範囲を超えないようにする
 			if (sample > 32767) {
@@ -90,6 +155,10 @@ static OSStatus outputCallback(void							*inRefCon,
 	
 	if (self != nil) {
 		[self prepareAUGraph];
+		
+		isSpeaking = isInstantSpeaking = justNow = false;
+		timeInSilent = timeFromLastSpeak = timeInInstantSpeaking = timeInNonInstantSpeaking = 0.0f;
+		noiseVolume = 100;
 	}
 	
 	return self;
@@ -99,7 +168,7 @@ static OSStatus outputCallback(void							*inRefCon,
 - (void)prepareAUGraph
 {
 	AUNode		remoteIONode;
-	AudioUnit	remoteIOUnit;
+	
 	
 	NewAUGraph(&_mAuGraph);
 	AUGraphOpen(self.mAuGraph);
@@ -111,11 +180,11 @@ static OSStatus outputCallback(void							*inRefCon,
 	cd.componentFlags		= cd.componentFlagsMask = 0;
 	
 	AUGraphAddNode(self.mAuGraph, &cd, &remoteIONode);
-	AUGraphNodeInfo(self.mAuGraph, remoteIONode, NULL, &remoteIOUnit);
+	AUGraphNodeInfo(self.mAuGraph, remoteIONode, NULL, &_remoteIOUnit);
 	
 	// マイク入力をオンにする
 	UInt32 flag = 1;
-	AudioUnitSetProperty(remoteIOUnit,
+	AudioUnitSetProperty(self.remoteIOUnit,
 						 kAudioOutputUnitProperty_EnableIO,
 						 kAudioUnitScope_Input,
 						 1, // Remote Input
@@ -126,13 +195,13 @@ static OSStatus outputCallback(void							*inRefCon,
 	AudioStreamBasicDescription audioFormat = CanonicalASBD(44100.0, 1);
 	
 	// モノラルに設定
-	AudioUnitSetProperty(remoteIOUnit,
+	AudioUnitSetProperty(self.remoteIOUnit,
 						 kAudioUnitProperty_StreamFormat,
 						 kAudioUnitScope_Output,	// 出力スコープ
 						 1,							// Remote input
 						 &audioFormat,
 						 sizeof(AudioStreamBasicDescription));
-	AudioUnitSetProperty(remoteIOUnit,
+	AudioUnitSetProperty(self.remoteIOUnit,
 						 kAudioUnitProperty_StreamFormat,
 						 kAudioUnitScope_Input,		// 入力スコープ
 						 0,							// Remote output
@@ -141,12 +210,12 @@ static OSStatus outputCallback(void							*inRefCon,
 	
 	AURenderCallbackStruct callbackStruct;
 	callbackStruct.inputProc		= outputCallback;
-	callbackStruct.inputProcRefCon	= remoteIOUnit;
+	callbackStruct.inputProcRefCon	= (__bridge void *)(self);
 	OSStatus err = AUGraphSetNodeInputCallback(self.mAuGraph, remoteIONode, 0, &callbackStruct);
 	NSLog(@"AUGraphSetNodeInputCallback: error %ld\n", err);
 	
 	UInt32 size;
-	AudioUnitGetProperty(remoteIOUnit,
+	AudioUnitGetProperty(self.remoteIOUnit,
 						 kAudioUnitProperty_StreamFormat,
 						 kAudioUnitScope_Output,		// 出力スコープ
 						 0,								// Remote Output

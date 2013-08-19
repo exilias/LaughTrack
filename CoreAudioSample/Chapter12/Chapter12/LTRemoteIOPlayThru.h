@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "LTViewController.h"
+
+
 @interface LTRemoteIOPlayThru : NSObject
+
+@property (nonatomic, assign) LTViewController *superView;
 
 - (void)prepareAUGraph;
 - (void)play;
