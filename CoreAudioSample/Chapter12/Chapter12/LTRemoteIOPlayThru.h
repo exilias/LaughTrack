@@ -13,5 +13,7 @@
 - (void)prepareAUGraph;
 - (void)play;
 - (void)stop;
+- (void)record:(NSURL *)toURL;	// 録音を実行するメソッド
+- (void)stopRecording;
 
 @end
