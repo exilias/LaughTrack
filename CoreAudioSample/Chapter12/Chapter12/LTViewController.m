@@ -8,7 +8,11 @@
 
 #import "LTViewController.h"
 
+#import "LTRemoteIOPlayThru.h"
+
 @interface LTViewController ()
+
+@property LTRemoteIOPlayThru *remoteIOPlayThru;
 
 @end
 
@@ -18,6 +22,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	
+	self.remoteIOPlayThru = [[LTRemoteIOPlayThru alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
