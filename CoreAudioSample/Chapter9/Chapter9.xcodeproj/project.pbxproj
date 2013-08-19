@@ -19,6 +19,9 @@
 		4713133217C1E849008BA945 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4713133017C1E849008BA945 /* MainStoryboard.storyboard */; };
 		4713133517C1E849008BA945 /* LTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713133417C1E849008BA945 /* LTViewController.m */; };
 		4713133D17C1E8B3008BA945 /* LTRemoteIOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713133C17C1E8B3008BA945 /* LTRemoteIOViewController.m */; };
+		4713133F17C1EAA3008BA945 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4713133E17C1EAA3008BA945 /* AudioToolbox.framework */; };
+		4713134217C1F2CE008BA945 /* LTRemoteOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713134117C1F2CE008BA945 /* LTRemoteOutput.m */; };
+		4713134617C1FE88008BA945 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4713134517C1FE88008BA945 /* CoreAudio.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,10 @@
 		4713133417C1E849008BA945 /* LTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTViewController.m; sourceTree = "<group>"; };
 		4713133B17C1E8B3008BA945 /* LTRemoteIOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTRemoteIOViewController.h; sourceTree = "<group>"; };
 		4713133C17C1E8B3008BA945 /* LTRemoteIOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTRemoteIOViewController.m; sourceTree = "<group>"; };
+		4713133E17C1EAA3008BA945 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4713134017C1F2CE008BA945 /* LTRemoteOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTRemoteOutput.h; sourceTree = "<group>"; };
+		4713134117C1F2CE008BA945 /* LTRemoteOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTRemoteOutput.m; sourceTree = "<group>"; };
+		4713134517C1FE88008BA945 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4713134617C1FE88008BA945 /* CoreAudio.framework in Frameworks */,
+				4713133F17C1EAA3008BA945 /* AudioToolbox.framework in Frameworks */,
 				4713131917C1E849008BA945 /* UIKit.framework in Frameworks */,
 				4713131B17C1E849008BA945 /* Foundation.framework in Frameworks */,
 				4713131D17C1E849008BA945 /* CoreGraphics.framework in Frameworks */,
@@ -59,6 +68,8 @@
 		4713130C17C1E849008BA945 = {
 			isa = PBXGroup;
 			children = (
+				4713134517C1FE88008BA945 /* CoreAudio.framework */,
+				4713133E17C1EAA3008BA945 /* AudioToolbox.framework */,
 				4713131E17C1E849008BA945 /* Chapter9 */,
 				4713131717C1E849008BA945 /* Frameworks */,
 				4713131617C1E849008BA945 /* Products */,
@@ -93,6 +104,8 @@
 				4713133417C1E849008BA945 /* LTViewController.m */,
 				4713133B17C1E8B3008BA945 /* LTRemoteIOViewController.h */,
 				4713133C17C1E8B3008BA945 /* LTRemoteIOViewController.m */,
+				4713134017C1F2CE008BA945 /* LTRemoteOutput.h */,
+				4713134117C1F2CE008BA945 /* LTRemoteOutput.m */,
 				4713131F17C1E849008BA945 /* Supporting Files */,
 			);
 			path = Chapter9;
@@ -183,6 +196,7 @@
 				4713132917C1E849008BA945 /* LTAppDelegate.m in Sources */,
 				4713133517C1E849008BA945 /* LTViewController.m in Sources */,
 				4713133D17C1E8B3008BA945 /* LTRemoteIOViewController.m in Sources */,
+				4713134217C1F2CE008BA945 /* LTRemoteOutput.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

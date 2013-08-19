@@ -10,4 +10,7 @@
 
 @interface LTRemoteIOViewController : UIViewController
 
+- (IBAction)pushedPlayButton:(id)sender;
+- (IBAction)pushedStopButton:(id)sender;
+
 @end

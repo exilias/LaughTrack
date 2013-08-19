@@ -8,7 +8,15 @@
 
 #import "LTRemoteIOViewController.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+
+#import "LTRemoteOutput.h"
+
+
+
 @interface LTRemoteIOViewController ()
+
+@property LTRemoteOutput *remoteOutput;
 
 @end
 
@@ -27,6 +35,26 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+	
+	
+	
+	// RemoteIO Audio UnitのAudioComponentDescriptionを作成
+	AudioComponentDescription cd;
+	cd.componentType		= kAudioUnitType_Output;
+	cd.componentSubType		= kAudioUnitSubType_RemoteIO;
+	cd.componentManufacturer = kAudioUnitManufacturer_Apple;
+	cd.componentFlags		= 0;
+	cd.componentFlagsMask	= 0;
+	
+	// AudioComponentDescriptionからAudioComponentを取得
+	AudioComponent component = AudioComponentFindNext(NULL, &cd);
+	CFStringRef name;
+	AudioComponentCopyName(component, &name);	// 名前を取得
+	NSLog(@"name = %@", name);
+	
+	// Remote Outputの準備
+	self.remoteOutput = [[LTRemoteOutput alloc] init];
+	[self.remoteOutput prepareAudioUnit];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +63,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pushedPlayButton:(id)sender
+{
+	[self.remoteOutput play];
+}
+
+- (IBAction)pushedStopButton:(id)sender
+{
+	[self.remoteOutput stop];
+}
 @end
