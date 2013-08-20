@@ -170,19 +170,9 @@
         }
     }
 	
-    if (self.isSpeaking) {
-        //NSLog(@"発話");
-        self.timeInSpeaking += 0.01;
-        self.timeInSilent = 0;
-    } else {
-        //NSLog(@"not発話");
-        self.timeInSpeaking = 0;
-        self.timeInSilent += 0.01;
-    }
-	
     // 相づち処理
     if(self.justNow) {
-        NSLog(@"今でしょ！");
+        NSLog(@"今でしょ！:%f", self.timeInSpeaking);
         self.justNow = NO;
         self.timeFromLastSpeak = 0;
 		
@@ -193,6 +183,16 @@
 		[self.player play];
     } else {
         self.timeFromLastSpeak += 0.01;
+    }
+	
+	if (self.isSpeaking) {
+        //NSLog(@"発話");
+        self.timeInSpeaking += 0.01;
+        self.timeInSilent = 0;
+    } else {
+        //NSLog(@"not発話");
+        self.timeInSpeaking = 0;
+        self.timeInSilent += 0.01;
     }
 	
     self.preIsSpeaking = self.isSpeaking;
