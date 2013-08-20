@@ -25,6 +25,10 @@
 		82FE6A7D17C20A6A00EF6142 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A7B17C20A6A00EF6142 /* InfoPlist.strings */; };
 		82FE6A8017C20A6A00EF6142 /* Proximity_SensorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FE6A7F17C20A6A00EF6142 /* Proximity_SensorTests.m */; };
 		82FE6A8A17C21C8300EF6142 /* jobs.png in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A8917C21C8300EF6142 /* jobs.png */; };
+		82FE6A8E17C307B700EF6142 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FE6A8D17C307B700EF6142 /* AudioToolbox.framework */; };
+		82FE6A9017C3084400EF6142 /* oc.wav in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A8F17C3084400EF6142 /* oc.wav */; };
+		82FE6A9217C3095A00EF6142 /* misawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A9117C3095A00EF6142 /* misawa.jpg */; };
+		82FE6A9417C3141800EF6142 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FE6A9317C3141800EF6142 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		82FE6A7E17C20A6A00EF6142 /* Proximity_SensorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Proximity_SensorTests.h; sourceTree = "<group>"; };
 		82FE6A7F17C20A6A00EF6142 /* Proximity_SensorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Proximity_SensorTests.m; sourceTree = "<group>"; };
 		82FE6A8917C21C8300EF6142 /* jobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jobs.png; sourceTree = "<group>"; };
+		82FE6A8D17C307B700EF6142 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		82FE6A8F17C3084400EF6142 /* oc.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oc.wav; sourceTree = SOURCE_ROOT; };
+		82FE6A9117C3095A00EF6142 /* misawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = misawa.jpg; path = ../../../../Desktop/misawa.jpg; sourceTree = "<group>"; };
+		82FE6A9317C3141800EF6142 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82FE6A9417C3141800EF6142 /* AVFoundation.framework in Frameworks */,
+				82FE6A8E17C307B700EF6142 /* AudioToolbox.framework in Frameworks */,
 				82FE6A4C17C20A6A00EF6142 /* UIKit.framework in Frameworks */,
 				82FE6A4E17C20A6A00EF6142 /* Foundation.framework in Frameworks */,
 				82FE6A5017C20A6A00EF6142 /* CoreGraphics.framework in Frameworks */,
@@ -91,6 +101,8 @@
 		82FE6A3F17C20A6A00EF6142 = {
 			isa = PBXGroup;
 			children = (
+				82FE6A9317C3141800EF6142 /* AVFoundation.framework */,
+				82FE6A8D17C307B700EF6142 /* AudioToolbox.framework */,
 				82FE6A5117C20A6A00EF6142 /* Proximity Sensor */,
 				82FE6A7817C20A6A00EF6142 /* Proximity SensorTests */,
 				82FE6A4A17C20A6A00EF6142 /* Frameworks */,
@@ -121,7 +133,6 @@
 		82FE6A5117C20A6A00EF6142 /* Proximity Sensor */ = {
 			isa = PBXGroup;
 			children = (
-				82FE6A8917C21C8300EF6142 /* jobs.png */,
 				82FE6A5A17C20A6A00EF6142 /* yukichiAppDelegate.h */,
 				82FE6A5B17C20A6A00EF6142 /* yukichiAppDelegate.m */,
 				82FE6A6317C20A6A00EF6142 /* MainStoryboard_iPhone.storyboard */,
@@ -136,7 +147,10 @@
 		82FE6A5217C20A6A00EF6142 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				82FE6A9117C3095A00EF6142 /* misawa.jpg */,
 				82FE6A5317C20A6A00EF6142 /* Proximity Sensor-Info.plist */,
+				82FE6A8F17C3084400EF6142 /* oc.wav */,
+				82FE6A8917C21C8300EF6142 /* jobs.png */,
 				82FE6A5417C20A6A00EF6142 /* InfoPlist.strings */,
 				82FE6A5717C20A6A00EF6142 /* main.m */,
 				82FE6A5917C20A6A00EF6142 /* Proximity Sensor-Prefix.pch */,
@@ -245,6 +259,8 @@
 				82FE6A6517C20A6A00EF6142 /* MainStoryboard_iPhone.storyboard in Resources */,
 				82FE6A6817C20A6A00EF6142 /* MainStoryboard_iPad.storyboard in Resources */,
 				82FE6A8A17C21C8300EF6142 /* jobs.png in Resources */,
+				82FE6A9017C3084400EF6142 /* oc.wav in Resources */,
+				82FE6A9217C3095A00EF6142 /* misawa.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

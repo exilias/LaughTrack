@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#include <AVFoundation/AVFoundation.h>
 
 @interface yukichiViewController : UIViewController
 

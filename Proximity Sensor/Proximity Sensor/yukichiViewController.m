@@ -35,16 +35,12 @@
 
 // 近接センサの値が変更
 - (void)proximitySensorStateDidchange:(NSNotification *)notification {
-    // センサに近づいたら踏み絵成功
+    // 近接センサが反応したら
     if ([UIDevice currentDevice].proximityState == YES) {
-        // アラート出す
-        NSString *message = @"おまえはApple教に入っていないな";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"踏み絵成功"
-                                                        message:message
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"OK", nil];
-        [alert show];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"oc" ofType:@"wave"];
+        NSURL *url = [NSURL fileURLWithPath:path];
+        AVAudioPlayer *audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+        [audio play];
     }
 }
 
