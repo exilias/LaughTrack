@@ -34,6 +34,8 @@
 AudioUnitSampleType noiseVolume;
 BOOL isSpeaking, isInstantSpeaking, justNow;
 float timeInSilent, timeFromLastSpeak, timeInInstantSpeaking, timeInNonInstantSpeaking;
+AudioUnitSampleType sampleAry[100]; //すべて0で初期化
+UInt32 sampleIndex = 0;
 
 
 static OSStatus renderCallback(void							*inRefCon,
@@ -70,51 +72,78 @@ static OSStatus outputCallback(void							*inRefCon,
 		NSLog(@"recordingCallback: error %ld\n", err);
 		return err;
 	}
-		
+
+	NSLog(@"%d", (unsigned int)inNumberFrames);
 	for (int j = 0; j < ioData->mNumberBuffers; j++) {
 		AudioSampleType *output = ioData->mBuffers[j].mData;
 				
 		for (int i = 0; i < inNumberFrames; i++) {
-			AudioUnitSampleType sample = output[i]/** 3.162277*/;	// 10dB
+			//AudioUnitSampleType sample = output[i]/** 3.162277*/;	// 10dB
+			
+			
+			sampleAry[sampleIndex] = abs(output[i]);
+			
+			sampleIndex++;
+			
+			if(sampleIndex >= 100){
+				sampleIndex = 0;
+			}
+			
+			//sample[10]の平均を求める
+			AudioUnitSampleType sampleAverage = 0.0;
+			for(int i=0; i < 100; i++){
+				sampleAverage += sampleAry[i];
+			}
+			
+			sampleAverage /= 100;
+			
+			NSLog(@"%f", 20 * log10(sampleAverage/32768.0));
+			
+			/*
+			 * 追加分おわり
+			 */
+			
+			
 			
 			
 			// ここで発話アルゴリズムを書く
 			// -------------------------------
-			if (abs(sample) > noiseVolume * 2) {
-				NSLog(@"発話");
+			
+			if (abs(sampleAverage) > noiseVolume * 2) {
 				if (!isInstantSpeaking) {
 					isInstantSpeaking = YES;
 				}
 			} else {
-				NSLog(@"Not発話");
 				if (isInstantSpeaking) {
 					isInstantSpeaking = NO;
 				}
 			}
 			
 			if (isInstantSpeaking) {
-				timeInInstantSpeaking += inNumberFrames;
+				timeInInstantSpeaking++;
 				timeInNonInstantSpeaking = 0;
 			} else {
 				timeInInstantSpeaking = 0;
-				timeInNonInstantSpeaking += inNumberFrames;
+				timeInNonInstantSpeaking++;
 			}
 			
 			// 発話フラグのオンオフ
 			if (isSpeaking) {
-				if (timeInNonInstantSpeaking > 0.5 * 44100.0) {
+				if (timeInNonInstantSpeaking > 10) { //10くらいに設定してみる
 					isSpeaking = NO;
 				}
 			} else {
-				if (timeInInstantSpeaking > 0.5 * 44100.0) {
+				if (timeInInstantSpeaking > 10) {
 					isSpeaking = YES;
 				}
 			}
 			
 			if (isSpeaking) {
+				NSLog(@"発話");
 				timeInSilent = 0;
 			} else {
-				timeInSilent += inNumberFrames;
+				NSLog(@"not発話");
+				timeInSilent++;
 			}
 			
 			if (justNow) {
@@ -123,25 +152,19 @@ static OSStatus outputCallback(void							*inRefCon,
 					justNow = NO;
 					timeFromLastSpeak = 0;
 				}
-			}
-			
-			//黙ってる時間が0.3秒以上　かつ　前回の発話から2.1秒以上経過
-			if (timeInSilent >= 0.3 * 44100.0 && !justNow) {
-				justNow = YES;
 				
-				//NSLog(@"うんうん！");
 			}
 			
 			
 			
 			// -32768 〜 32767の範囲を超えないようにする
-			if (sample > 32767) {
-				sample = 32767;
-			} else if (sample < -32768) {
-				sample = -32768;
-			}
-			
-			output[i] = (AudioSampleType)sample;
+//			if (sample > 32767) {
+//				sample = 32767;
+//			} else if (sample < -32768) {
+//				sample = -32768;
+//			}
+//			
+			//output[i] = (AudioSampleType)sample;
 		}
 	}
 	
@@ -159,6 +182,10 @@ static OSStatus outputCallback(void							*inRefCon,
 		isSpeaking = isInstantSpeaking = justNow = false;
 		timeInSilent = timeFromLastSpeak = timeInInstantSpeaking = timeInNonInstantSpeaking = 0.0f;
 		noiseVolume = 100;
+		
+		for (int i = 0; i < 100; i++) {
+			sampleAry[i] = 0;
+		}
 	}
 	
 	return self;
