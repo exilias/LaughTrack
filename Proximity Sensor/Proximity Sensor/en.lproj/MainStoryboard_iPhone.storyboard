@@ -12,17 +12,17 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="まだまだ？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="297" translatesAutoresizingMaskIntoConstraints="NO" id="m4g-h7-pPM">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="まだまだ？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="298" translatesAutoresizingMaskIntoConstraints="NO" id="m4g-h7-pPM">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="o5n-O6-dac"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="31"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="misawa.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-Ds-2yF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="jobs.png" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-Ds-2yF">
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="314" id="4gp-NQ-3n3"/>
                                     <constraint firstAttribute="width" constant="289" id="Q6D-5s-qYh"/>
-                                    <constraint firstAttribute="height" constant="260" id="Qxv-fI-4qd"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -31,7 +31,7 @@
                             <constraint firstItem="m4g-h7-pPM" firstAttribute="trailing" secondItem="cbb-Ds-2yF" secondAttribute="trailing" type="default" id="Ace-PS-d0g"/>
                             <constraint firstItem="m4g-h7-pPM" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Aex-pc-7Rd"/>
                             <constraint firstItem="cbb-Ds-2yF" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GQa-Qs-8d6"/>
-                            <constraint firstItem="cbb-Ds-2yF" firstAttribute="top" secondItem="3" secondAttribute="top" constant="113" id="d5a-k9-YxZ"/>
+                            <constraint firstItem="cbb-Ds-2yF" firstAttribute="top" secondItem="m4g-h7-pPM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="SL8-i3-Hdq"/>
                             <constraint firstItem="m4g-h7-pPM" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="u4l-Id-Glr"/>
                         </constraints>
                     </view>
@@ -41,7 +41,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="misawa.jpg" width="250" height="250"/>
+        <image name="jobs.png" width="310" height="400"/>
     </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">

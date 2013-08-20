@@ -10,6 +10,7 @@
 
 @interface yukichiViewController ()
 
+@property AVAudioPlayer *player;
 @end
 
 @implementation yukichiViewController
@@ -37,10 +38,12 @@
 - (void)proximitySensorStateDidchange:(NSNotification *)notification {
     // 近接センサが反応したら
     if ([UIDevice currentDevice].proximityState == YES) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"oc" ofType:@"wave"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"oc" ofType:@"wav"];
         NSURL *url = [NSURL fileURLWithPath:path];
-        AVAudioPlayer *audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
-        [audio play];
+		NSError *error;
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        [self.player play];
+		NSLog(@"play: %@", error);
     }
 }
 

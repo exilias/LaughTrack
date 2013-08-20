@@ -27,7 +27,6 @@
 		82FE6A8A17C21C8300EF6142 /* jobs.png in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A8917C21C8300EF6142 /* jobs.png */; };
 		82FE6A8E17C307B700EF6142 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FE6A8D17C307B700EF6142 /* AudioToolbox.framework */; };
 		82FE6A9017C3084400EF6142 /* oc.wav in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A8F17C3084400EF6142 /* oc.wav */; };
-		82FE6A9217C3095A00EF6142 /* misawa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82FE6A9117C3095A00EF6142 /* misawa.jpg */; };
 		82FE6A9417C3141800EF6142 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82FE6A9317C3141800EF6142 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +67,6 @@
 		82FE6A8917C21C8300EF6142 /* jobs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jobs.png; sourceTree = "<group>"; };
 		82FE6A8D17C307B700EF6142 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		82FE6A8F17C3084400EF6142 /* oc.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oc.wav; sourceTree = SOURCE_ROOT; };
-		82FE6A9117C3095A00EF6142 /* misawa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = misawa.jpg; path = ../../../../Desktop/misawa.jpg; sourceTree = "<group>"; };
 		82FE6A9317C3141800EF6142 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -147,7 +145,6 @@
 		82FE6A5217C20A6A00EF6142 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				82FE6A9117C3095A00EF6142 /* misawa.jpg */,
 				82FE6A5317C20A6A00EF6142 /* Proximity Sensor-Info.plist */,
 				82FE6A8F17C3084400EF6142 /* oc.wav */,
 				82FE6A8917C21C8300EF6142 /* jobs.png */,
@@ -260,7 +257,6 @@
 				82FE6A6817C20A6A00EF6142 /* MainStoryboard_iPad.storyboard in Resources */,
 				82FE6A8A17C21C8300EF6142 /* jobs.png in Resources */,
 				82FE6A9017C3084400EF6142 /* oc.wav in Resources */,
-				82FE6A9217C3095A00EF6142 /* misawa.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +484,7 @@
 				82FE6A8517C20A6A00EF6142 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82FE6A8617C20A6A00EF6142 /* Build configuration list for PBXNativeTarget "Proximity SensorTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +493,7 @@
 				82FE6A8817C20A6A00EF6142 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
