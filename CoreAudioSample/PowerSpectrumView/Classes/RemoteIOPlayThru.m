@@ -52,6 +52,7 @@ static OSStatus outputCallback(
     float real[inNumberFrames];
     for(int i = 0; i < inNumberFrames; i++){
         real[i] = output[i] / 32767.0;
+		output[i] = 0;
     }
     
     float powerSpectrum[inNumberFrames / 2];
@@ -84,6 +85,7 @@ static OSStatus outputCallback(
 
 
 -(void)prepareAUGraph{
+	
     OSStatus err;
     AUNode remoteIONode;
     
@@ -109,6 +111,8 @@ static OSStatus outputCallback(
                          sizeof(flag));
     //オーディオ正準形
     AudioStreamBasicDescription audioFormat = CanonicalASBD(SAMPLE_RATE, 1);
+	
+	// モノラルに設定
     err = AudioUnitSetProperty(remoteIOUnit,
                          kAudioUnitProperty_StreamFormat,
                          kAudioUnitScope_Output, //Remote inputのアウトプットバス
@@ -116,7 +120,6 @@ static OSStatus outputCallback(
                          &audioFormat,
                          sizeof(AudioStreamBasicDescription));
     checkError(err, "kAudioUnitProperty_StreamFormat 1");
-    
     
     err = AudioUnitSetProperty(remoteIOUnit,
                          kAudioUnitProperty_StreamFormat,
@@ -126,6 +129,7 @@ static OSStatus outputCallback(
                          sizeof(AudioStreamBasicDescription));
     checkError(err, "kAudioUnitProperty_StreamFormat 2");
     
+	
     AURenderCallbackStruct callbackStruct;
 	callbackStruct.inputProc = outputCallback;
 	callbackStruct.inputProcRefCon = self;

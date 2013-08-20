@@ -16,6 +16,8 @@
 @property float *sampleAry;
 @property int sampleIndex;
 
+@property AVAudioPlayer *player;
+
 @end
 
 
@@ -23,6 +25,19 @@
 @implementation RemoteIOPlayThruViewController
 
 - (void)viewDidLoad {
+	AudioSessionInitialize(NULL, NULL, NULL, NULL);
+    UInt32 category = kAudioSessionCategory_PlayAndRecord;
+    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
+                            sizeof(UInt32),
+                            &category);
+	UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
+                             sizeof (audioRouteOverride),
+                             &audioRouteOverride);
+	
+    AudioSessionSetActive(YES);
+	
+	
 	self.noiseVolume = 0.2;
 	self.isSpeaking = self.isInstantSpeaking = self.justNow = self.preIsSpeaking = NO;
 	self.timeInSilent = self.timeFromLastSpeak = self.timeInInstantSpeaking = self.timeInNonInstantSpeaking = self.timeInSpeaking = 0.0f;
@@ -117,7 +132,7 @@
     // ここで発話アルゴリズムを書く
     // -------------------------------
 	
-    if (sampleAverage > (/*self.noiseVolume * 2*/0.4)) {
+    if (sampleAverage > (/*self.noiseVolume * 2*/0.3)) {
         if (!self.isInstantSpeaking) {
             self.isInstantSpeaking = YES;
         }
@@ -150,7 +165,7 @@
 	
     // 今でしょフラグのオンオフ
     if(self.preIsSpeaking && !self.isSpeaking) {
-        if (self.timeInSpeaking >= 0.5 && self.timeFromLastSpeak >= 2.1) {
+        if (self.timeInSpeaking >= 0.2 && self.timeFromLastSpeak >= 2.1) {
             self.justNow = YES;
         }
     }
@@ -170,6 +185,12 @@
         NSLog(@"今でしょ！");
         self.justNow = NO;
         self.timeFromLastSpeak = 0;
+		
+		NSString *path = [[NSBundle mainBundle] pathForResource:@"Normal_un_1" ofType:@"wav"];
+		NSURL *fileURL = [NSURL fileURLWithPath:path];
+		self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+		self.player.volume = 1.0;
+		[self.player play];
     } else {
         self.timeFromLastSpeak += 0.01;
     }

@@ -16,6 +16,10 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* RemoteIOPlayThruViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* RemoteIOPlayThruViewController.m */; };
 		4757EAC017C3340D00407AF6 /* Normal_aa.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4757EABF17C3340D00407AF6 /* Normal_aa.wav */; };
+		4757EAC517C33D0E00407AF6 /* Normal_un_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4757EAC117C33D0E00407AF6 /* Normal_un_1.wav */; };
+		4757EAC617C33D0E00407AF6 /* Normal_un_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4757EAC217C33D0E00407AF6 /* Normal_un_2.wav */; };
+		4757EAC717C33D0E00407AF6 /* Normal_un_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4757EAC317C33D0E00407AF6 /* Normal_un_3.wav */; };
+		4757EAC817C33D0E00407AF6 /* Normal_unun.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4757EAC417C33D0E00407AF6 /* Normal_unun.wav */; };
 		D9442B871013B86300C47EBF /* RemoteIOPlayThru.m in Sources */ = {isa = PBXBuildFile; fileRef = D9442B861013B86300C47EBF /* RemoteIOPlayThru.m */; };
 		D9442B8A1013B87600C47EBF /* iPhoneCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = D9442B891013B87600C47EBF /* iPhoneCoreAudio.m */; };
 		D9442B8E1013B88E00C47EBF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9442B8D1013B88E00C47EBF /* AudioToolbox.framework */; };
@@ -37,8 +41,11 @@
 		28D7ACF70DDB3853001CB0EB /* RemoteIOPlayThruViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteIOPlayThruViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* RemoteIOPlayThru_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteIOPlayThru_Prefix.pch; sourceTree = "<group>"; };
-		4757EABE17C3302D00407AF6 /* Normal_un_1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Normal_un_1.caf; sourceTree = "<group>"; };
 		4757EABF17C3340D00407AF6 /* Normal_aa.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Normal_aa.wav; sourceTree = "<group>"; };
+		4757EAC117C33D0E00407AF6 /* Normal_un_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Normal_un_1.wav; sourceTree = "<group>"; };
+		4757EAC217C33D0E00407AF6 /* Normal_un_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Normal_un_2.wav; sourceTree = "<group>"; };
+		4757EAC317C33D0E00407AF6 /* Normal_un_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Normal_un_3.wav; sourceTree = "<group>"; };
+		4757EAC417C33D0E00407AF6 /* Normal_unun.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Normal_unun.wav; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* RemoteIOPlayThru-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RemoteIOPlayThru-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D9442B851013B86300C47EBF /* RemoteIOPlayThru.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteIOPlayThru.h; sourceTree = "<group>"; };
 		D9442B861013B86300C47EBF /* RemoteIOPlayThru.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteIOPlayThru.m; sourceTree = "<group>"; };
@@ -120,7 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				4757EABF17C3340D00407AF6 /* Normal_aa.wav */,
-				4757EABE17C3302D00407AF6 /* Normal_un_1.caf */,
+				4757EAC117C33D0E00407AF6 /* Normal_un_1.wav */,
+				4757EAC217C33D0E00407AF6 /* Normal_un_2.wav */,
+				4757EAC317C33D0E00407AF6 /* Normal_un_3.wav */,
+				4757EAC417C33D0E00407AF6 /* Normal_unun.wav */,
 				2899E5210DE3E06400AC0155 /* RemoteIOPlayThruViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* RemoteIOPlayThru-Info.plist */,
@@ -189,6 +199,10 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* RemoteIOPlayThruViewController.xib in Resources */,
 				4757EAC017C3340D00407AF6 /* Normal_aa.wav in Resources */,
+				4757EAC517C33D0E00407AF6 /* Normal_un_1.wav in Resources */,
+				4757EAC617C33D0E00407AF6 /* Normal_un_2.wav in Resources */,
+				4757EAC717C33D0E00407AF6 /* Normal_un_3.wav in Resources */,
+				4757EAC817C33D0E00407AF6 /* Normal_unun.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
