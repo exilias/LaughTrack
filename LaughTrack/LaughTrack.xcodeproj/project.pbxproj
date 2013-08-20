@@ -17,7 +17,7 @@
 		471312FE17C1E161008BA945 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 471312FD17C1E161008BA945 /* Default@2x.png */; };
 		4713130017C1E161008BA945 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 471312FF17C1E161008BA945 /* Default-568h@2x.png */; };
 		4713130317C1E161008BA945 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4713130117C1E161008BA945 /* MainStoryboard.storyboard */; };
-		4713130617C1E161008BA945 /* LTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713130517C1E161008BA945 /* LTViewController.m */; };
+		4713130617C1E161008BA945 /* LTTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4713130517C1E161008BA945 /* LTTopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +35,8 @@
 		471312FD17C1E161008BA945 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		471312FF17C1E161008BA945 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4713130217C1E161008BA945 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4713130417C1E161008BA945 /* LTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTViewController.h; sourceTree = "<group>"; };
-		4713130517C1E161008BA945 /* LTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTViewController.m; sourceTree = "<group>"; };
+		4713130417C1E161008BA945 /* LTTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTTopViewController.h; sourceTree = "<group>"; };
+		4713130517C1E161008BA945 /* LTTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTTopViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,7 @@
 				4713130117C1E161008BA945 /* MainStoryboard.storyboard */,
 				471312F817C1E161008BA945 /* LTAppDelegate.h */,
 				471312F917C1E161008BA945 /* LTAppDelegate.m */,
-				4713130417C1E161008BA945 /* LTViewController.h */,
-				4713130517C1E161008BA945 /* LTViewController.m */,
+				4757EABD17C32E0700407AF6 /* View */,
 				471312F017C1E161008BA945 /* Supporting Files */,
 			);
 			path = LaughTrack;
@@ -105,6 +104,15 @@
 				471312FF17C1E161008BA945 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4757EABD17C32E0700407AF6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4713130417C1E161008BA945 /* LTTopViewController.h */,
+				4713130517C1E161008BA945 /* LTTopViewController.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +184,7 @@
 			files = (
 				471312F617C1E161008BA945 /* main.m in Sources */,
 				471312FA17C1E161008BA945 /* LTAppDelegate.m in Sources */,
-				4713130617C1E161008BA945 /* LTViewController.m in Sources */,
+				4713130617C1E161008BA945 /* LTTopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +307,7 @@
 				4713130B17C1E161008BA945 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

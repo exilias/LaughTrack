@@ -1,18 +1,18 @@
 //
-//  LTViewController.m
+//  LTTopViewController.m
 //  LaughTrack
 //
 //  Created by 石井 晃 on 13/08/19.
 //  Copyright (c) 2013年 OneChance. All rights reserved.
 //
 
-#import "LTViewController.h"
+#import "LTTopViewController.h"
 
-@interface LTViewController ()
+@interface LTTopViewController ()
 
 @end
 
-@implementation LTViewController
+@implementation LTTopViewController
 
 - (void)viewDidLoad
 {

@@ -1,5 +1,5 @@
 //
-//  LTViewController.h
+//  LTTopViewController.h
 //  LaughTrack
 //
 //  Created by 石井 晃 on 13/08/19.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTViewController : UIViewController
+@interface LTTopViewController : UIViewController
 
 @end
