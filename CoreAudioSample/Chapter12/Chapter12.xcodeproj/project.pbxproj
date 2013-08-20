@@ -18,6 +18,10 @@
 		4713139D17C20BC7008BA945 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4713139C17C20BC7008BA945 /* Default-568h@2x.png */; };
 		471313A017C20BC7008BA945 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4713139E17C20BC7008BA945 /* MainStoryboard.storyboard */; };
 		471313A317C20BC7008BA945 /* LTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 471313A217C20BC7008BA945 /* LTViewController.m */; };
+		471313AB17C20E48008BA945 /* LTRemoteIOPlayThru.m in Sources */ = {isa = PBXBuildFile; fileRef = 471313AA17C20E48008BA945 /* LTRemoteIOPlayThru.m */; };
+		471313AD17C20E5B008BA945 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471313AC17C20E5B008BA945 /* AudioToolbox.framework */; };
+		471313AF17C20E60008BA945 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 471313AE17C20E60008BA945 /* CoreAudio.framework */; };
+		471313B217C2157B008BA945 /* iPhoneCoreAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 471313B017C21497008BA945 /* iPhoneCoreAudio.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,12 @@
 		4713139F17C20BC7008BA945 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		471313A117C20BC7008BA945 /* LTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTViewController.h; sourceTree = "<group>"; };
 		471313A217C20BC7008BA945 /* LTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTViewController.m; sourceTree = "<group>"; };
+		471313A917C20E47008BA945 /* LTRemoteIOPlayThru.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTRemoteIOPlayThru.h; sourceTree = "<group>"; };
+		471313AA17C20E48008BA945 /* LTRemoteIOPlayThru.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTRemoteIOPlayThru.m; sourceTree = "<group>"; };
+		471313AC17C20E5B008BA945 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		471313AE17C20E60008BA945 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		471313B017C21497008BA945 /* iPhoneCoreAudio.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPhoneCoreAudio.m; sourceTree = "<group>"; };
+		471313B117C21497008BA945 /* iPhoneCoreAudio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iPhoneCoreAudio.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				471313AF17C20E60008BA945 /* CoreAudio.framework in Frameworks */,
+				471313AD17C20E5B008BA945 /* AudioToolbox.framework in Frameworks */,
 				4713138717C20BC6008BA945 /* UIKit.framework in Frameworks */,
 				4713138917C20BC6008BA945 /* Foundation.framework in Frameworks */,
 				4713138B17C20BC6008BA945 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +85,8 @@
 		4713138517C20BC6008BA945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				471313AE17C20E60008BA945 /* CoreAudio.framework */,
+				471313AC17C20E5B008BA945 /* AudioToolbox.framework */,
 				4713138617C20BC6008BA945 /* UIKit.framework */,
 				4713138817C20BC6008BA945 /* Foundation.framework */,
 				4713138A17C20BC6008BA945 /* CoreGraphics.framework */,
@@ -88,6 +102,10 @@
 				4713139E17C20BC7008BA945 /* MainStoryboard.storyboard */,
 				471313A117C20BC7008BA945 /* LTViewController.h */,
 				471313A217C20BC7008BA945 /* LTViewController.m */,
+				471313A917C20E47008BA945 /* LTRemoteIOPlayThru.h */,
+				471313AA17C20E48008BA945 /* LTRemoteIOPlayThru.m */,
+				471313B117C21497008BA945 /* iPhoneCoreAudio.h */,
+				471313B017C21497008BA945 /* iPhoneCoreAudio.m */,
 				4713138D17C20BC6008BA945 /* Supporting Files */,
 			);
 			path = Chapter12;
@@ -177,6 +195,8 @@
 				4713139317C20BC6008BA945 /* main.m in Sources */,
 				4713139717C20BC6008BA945 /* LTAppDelegate.m in Sources */,
 				471313A317C20BC7008BA945 /* LTViewController.m in Sources */,
+				471313AB17C20E48008BA945 /* LTRemoteIOPlayThru.m in Sources */,
+				471313B217C2157B008BA945 /* iPhoneCoreAudio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

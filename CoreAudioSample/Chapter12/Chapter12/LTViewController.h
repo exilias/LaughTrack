@@ -10,4 +10,12 @@
 
 @interface LTViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *currentLevelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nowTalkingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noiseLevelLabel;
+@property BOOL isNoiseRecording;
+
+- (IBAction)pushedNoiseRecordButton:(id)sender;
+
+- (void)updateCurrentLevelLabel:(NSString *)str;
 @end
